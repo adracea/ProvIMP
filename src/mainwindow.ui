@@ -1,0 +1,410 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>885</width>
+    <height>512</height>
+   </rect>
+  </property>
+  <property name="font">
+   <font>
+    <family>FreeSerif</family>
+   </font>
+  </property>
+  <property name="windowTitle">
+   <string>IMP</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="resources.qrc">
+    <normaloff>:/graphics/impicon.png</normaloff>:/graphics/impicon.png</iconset>
+  </property>
+  <property name="autoFillBackground">
+   <bool>true</bool>
+  </property>
+  <property name="documentMode">
+   <bool>false</bool>
+  </property>
+  <property name="unifiedTitleAndToolBarOnMac">
+   <bool>false</bool>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <property name="enabled">
+    <bool>true</bool>
+   </property>
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+     <horstretch>1</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <layout class="QGridLayout" name="gridLayout_2">
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="SvgMapView" name="mapView">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>1</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>0</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="autoFillBackground">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>885</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Tahoma</family>
+     <weight>75</weight>
+     <bold>true</bold>
+    </font>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <widget class="QMenu" name="menuHelp">
+    <property name="title">
+     <string>&amp;Help</string>
+    </property>
+    <addaction name="actionAbout"/>
+   </widget>
+   <widget class="QMenu" name="menuOptions">
+    <property name="title">
+     <string>&amp;Settings</string>
+    </property>
+    <addaction name="actionAuto_follow"/>
+    <addaction name="actionOptions"/>
+   </widget>
+   <widget class="QMenu" name="menuDebug">
+    <property name="title">
+     <string>Debug</string>
+    </property>
+    <addaction name="actionTest_Message"/>
+   </widget>
+   <widget class="QMenu" name="menuMap">
+    <property name="title">
+     <string>&amp;Map</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuFind">
+    <property name="title">
+     <string>&amp;Find</string>
+    </property>
+    <addaction name="actionFindMessages"/>
+    <addaction name="actionFindSystem"/>
+   </widget>
+   <widget class="QMenu" name="menuTheme">
+    <property name="title">
+     <string>&amp;Theme</string>
+    </property>
+    <addaction name="separator"/>
+    <addaction name="actionCustomize"/>
+    <addaction name="actionSave_As_Theme"/>
+   </widget>
+   <widget class="QMenu" name="menuPilots">
+    <property name="title">
+     <string>&amp;Pilots</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menu_Window">
+    <property name="title">
+     <string>&amp;Window</string>
+    </property>
+    <addaction name="action_Always_on_Top"/>
+    <addaction name="action_Frameless_Window"/>
+    <addaction name="action_Menu_Toggle"/>
+    <addaction name="action_Overlay_Mode"/>
+    <addaction name="actionToggle_Message_List"/>
+   </widget>
+   <widget class="QMenu" name="menu_View">
+    <property name="title">
+     <string>&amp;View</string>
+    </property>
+    <addaction name="actionShow_Bridges"/>
+    <addaction name="separator"/>
+    <addaction name="actionReset_Rotation"/>
+   </widget>
+   <addaction name="menuPilots"/>
+   <addaction name="menuFind"/>
+   <addaction name="menuMap"/>
+   <addaction name="menuOptions"/>
+   <addaction name="menuTheme"/>
+   <addaction name="menu_View"/>
+   <addaction name="menu_Window"/>
+   <addaction name="menuHelp"/>
+   <addaction name="menuDebug"/>
+  </widget>
+  <widget class="QStatusBar" name="statusBar">
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QDockWidget" name="dockWidget">
+   <property name="sizePolicy">
+    <sizepolicy hsizetype="Fixed" vsizetype="Expanding">
+     <horstretch>0</horstretch>
+     <verstretch>0</verstretch>
+    </sizepolicy>
+   </property>
+   <property name="autoFillBackground">
+    <bool>true</bool>
+   </property>
+   <property name="windowTitle">
+    <string>All Messages:</string>
+   </property>
+   <attribute name="dockWidgetArea">
+    <number>1</number>
+   </attribute>
+   <widget class="QWidget" name="dockWidgetContents">
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <layout class="QGridLayout" name="gridLayout">
+     <property name="leftMargin">
+      <number>0</number>
+     </property>
+     <property name="topMargin">
+      <number>0</number>
+     </property>
+     <property name="rightMargin">
+      <number>0</number>
+     </property>
+     <property name="bottomMargin">
+      <number>0</number>
+     </property>
+     <property name="spacing">
+      <number>0</number>
+     </property>
+     <item row="0" column="0">
+      <widget class="ChatView" name="listView">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="baseSize">
+        <size>
+         <width>0</width>
+         <height>64</height>
+        </size>
+       </property>
+       <property name="font">
+        <font>
+         <family>Arial</family>
+         <pointsize>10</pointsize>
+        </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>true</bool>
+       </property>
+       <property name="horizontalScrollBarPolicy">
+        <enum>Qt::ScrollBarAlwaysOff</enum>
+       </property>
+       <property name="alternatingRowColors">
+        <bool>true</bool>
+       </property>
+       <property name="verticalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="horizontalScrollMode">
+        <enum>QAbstractItemView::ScrollPerPixel</enum>
+       </property>
+       <property name="isWrapping" stdset="0">
+        <bool>false</bool>
+       </property>
+       <property name="resizeMode">
+        <enum>QListView::Adjust</enum>
+       </property>
+       <property name="wordWrap">
+        <bool>true</bool>
+       </property>
+       <property name="selectionRectVisible">
+        <bool>true</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+  <action name="actionAbout">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+   <property name="toolTip">
+    <string>About IMP...</string>
+   </property>
+  </action>
+  <action name="actionOptions">
+   <property name="text">
+    <string>&amp;Options</string>
+   </property>
+   <property name="toolTip">
+    <string>Change IMP options and configuration.</string>
+   </property>
+  </action>
+  <action name="actionAuto_follow">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Auto-follow</string>
+   </property>
+   <property name="toolTip">
+    <string>Recenter map when changing systems.</string>
+   </property>
+  </action>
+  <action name="actionF_YH5B">
+   <property name="text">
+    <string>F-YH5B</string>
+   </property>
+  </action>
+  <action name="actionN_RMSH">
+   <property name="text">
+    <string>N-RMSH</string>
+   </property>
+  </action>
+  <action name="actionFindSystem">
+   <property name="text">
+    <string>&amp;System (Ctrl+F)</string>
+   </property>
+   <property name="toolTip">
+    <string>Locate a system by name or partial name.</string>
+   </property>
+  </action>
+  <action name="actionShow_Bridges">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show &amp;Bridges</string>
+   </property>
+  </action>
+  <action name="actionSave_As_Theme">
+   <property name="text">
+    <string>Save &amp;As Theme</string>
+   </property>
+   <property name="toolTip">
+    <string>Save current theme customizations.</string>
+   </property>
+  </action>
+  <action name="actionFindMessages">
+   <property name="text">
+    <string>Messages</string>
+   </property>
+  </action>
+  <action name="actionCustomize">
+   <property name="text">
+    <string>&amp;Customize</string>
+   </property>
+  </action>
+  <action name="actionReset_Rotation">
+   <property name="text">
+    <string>&amp;Reset Rotation</string>
+   </property>
+  </action>
+  <action name="action_Always_on_Top">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Always on &amp;Top</string>
+   </property>
+  </action>
+  <action name="action_Frameless_Window">
+   <property name="checkable">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>Frameless &amp;Window (w)</string>
+   </property>
+  </action>
+  <action name="action_Overlay_Mode">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>false</bool>
+   </property>
+   <property name="text">
+    <string>&amp;Overlay Mode (o)</string>
+   </property>
+  </action>
+  <action name="action_Menu_Toggle">
+   <property name="text">
+    <string>&amp;Menu Toggle (m)</string>
+   </property>
+  </action>
+  <action name="actionToggle_Message_List">
+   <property name="text">
+    <string>Toggle Message List (L)</string>
+   </property>
+  </action>
+  <action name="actionTest_Message">
+   <property name="text">
+    <string>Test Message</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>ChatView</class>
+   <extends>QListView</extends>
+   <header>chatview.h</header>
+  </customwidget>
+  <customwidget>
+   <class>SvgMapView</class>
+   <extends>QGraphicsView</extends>
+   <header>svgmapview.h</header>
+  </customwidget>
+ </customwidgets>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>

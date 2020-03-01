@@ -1,0 +1,444 @@
+0.9.7.7 - Fixed following pilots, after more log breakage from
+          CCP.  As long as you've jumped systems in the last
+          day or so, the pilot should show up.  In the future,
+          this may be changed to use another method.
+
+          Now properly saves the last/current map on exit.
+
+          Fixed bug where pilot may be added to pilots list
+          twice when using some desktop managers.
+
+          Added option to disable music on About/Info dialog.
+
+0.9.7.3 - Adjust to cope with CCP's new log naming schema.
+
+0.9.7.2 - Fixed playing a sound at double volume (actually
+          playing it twice overlapping) when you have two chars
+          in local seeing the same alert.
+
+          Fixed misparsing of questions that included 'clear' in
+          them, such as "Is KBP clr?".  BTW, KBP is never clear.
+
+          Fixed "*DEBUGGING*" entries accidentally inserted in
+          channel list.
+
+0.9.7 - Changed log watching logic to further work around the
+        post-Vista behavior where NTFS does not update file
+        modification times until the handle is closed.  Hopefully
+        this fixes the problems where updates would not be seen
+        if additional characters were logged on/off or if IMP
+        were left open for extended periods.
+
+        Updated Qt libraries in Windows build to v5.9.2.
+
+0.9.6.1 - Switched to SFML/OpenAL for the audio engine.  WAV,
+          OGG/Vorbis and FLAC sounds are currently supported.  MP3
+          is not yet supported due to licensing issues with the
+          underlying library, but I expect it to be implemented in
+          the near future now that the patents have expired.
+
+
+
+0.9.6 - Fixes following for users of the German-language client.
+
+        Fix KOS check bug for some corps where there are partial
+        matches on the corp name.
+
+        Added the ability to set custom system graphics per theme.
+        This requires specially formatted SVGs with specific shape
+        group names.  Documentation, plus some examples of how to
+        create them will be added in a release in the near
+        future.  Opacity, scaling, and position attributes are
+        also customizable.
+
+0.9.5 - If the map is autoscrolling its focus to a system and you
+        move it yourself, it will no longer fight you and jump
+        back to focusing on the first system.
+
+        Fix red-by-last check to not misreport partial matches.
+
+        Fix kos checks now that CVA uses https.
+
+        Improve parsing of messages that are responses to system
+        status queries.  (i.e. one player says "KBP status?",
+        and another responds with only "clr".
+
+        Added test message dialog to debug menu.
+
+0.9.4.2 - Fixed crash when map was left in invalid state after failed
+          load.
+
+          Fixed bug where pilot and system names were not properly being
+          passed to some functions due to menu shortcuts.  Oddly, this
+          didn't show itself when using Qt with Unity, but it does with
+          KDE (and presumably Windows).
+
+          Change handling of ctrl/alt keys so that their up/down states
+          can no longer get out of sync when swapping between windows.
+
+0.9.4.1 - Fixed bug where #defines were not working with newest qt/gcc.
+          (thanks Hibasnev!)
+
+          Fixed bug where Windows build would assert setting alarms.
+
+0.9.4 - Fixed crash when jump bridges fail to load.  Also suppressed
+        the error message, since most systems won't have jump bridges.
+
+        Corrected an issue where logcatcher could watch some duplicate
+        log files unnecessarily.
+
+        Added menu option (to Windows menu) for toggling message
+        list off and on so that people don't need to know shortcut
+        key.
+
+        New feature:  Wormhole report tracking.  "wormhole in xx-xxxx."
+        or "wh in xx-xxxx collapsed".
+
+0.9.3 - New feature:  Instead of one alert sound, you can now configure
+        differing sounds (or the same sound) at differing (or the same)
+        volumes for each jump away you wish to be alerted.  If you've
+        previously configured alerts, IMP will set the proximity
+        configuration to give you the same results.  New users get two
+        defaults (for zero and one jump) that they can amend.
+
+        Fixed false KOS results when CVA checker has a partial name match
+        or if a pilot's name matches an Alliance/Corp.
+
+        Parser improvements for when people are saying a system is *not*
+        clear or are just saying a gate is clear.
+
+        No longer warns new users that rules file doesn't exist.  Instead
+        it creates one default rule that plays a sound if someone says
+        things like " red" or "kos!" in local.
+
+        Updated Linux build instructions to include submodules.
+
+0.9.2 - Fixed parser bug where questions where not being marked as such.
+
+        Fixed bug where all messages with links were always being added to
+        the messages dock.
+
+        Fixed an issue with recognizing stellar system changes that should
+        make auto-follow now work for users who are using German
+        localizations.
+
+        Added missing code so that Update checking toggle and Check Now
+        button will actually work.
+
+        Converted theme customization dialog into a toolbox that immediately
+        applies changes.
+
+        Cleanup:  Changed all slot/signals to use new-style connect format,
+        except for the dynamic connections in AsyncInfo.
+
+0.9.1 - Fixed the bug I totally missed when implementing hyperlink support
+        yesterday.  They should now work properly.
+
+        Parser improvements:  IMP should now be able to recognize multiple
+        sentences within an intel report and handle more complex reports
+        such as "20+ red KBP. XHQ clr! JEIV pocket status?".
+
+        Fixed a memory leak introduced in 0.9.0.
+
+0.9.0 - Automatic update checking!  Versions beyond 0.9.0 should alert you
+        when a new release has been uploaded/committed.
+
+        Support for all systems!  There is a 'maps' file in the
+        dictionaries directory that controls which maps are on the Maps
+        menu.  You can customize it to add new ones, or pair it down
+        to only the ones you want to see.
+
+        Hyperlinks in the message view now work!  You can click DScans
+        and other links from IMP now.  They will open in the default
+        browser for your system.  In the future I will let you
+        override that and/or open them in a tab within IMP itself.
+
+        Added option on Poller tab to skip loading of old intel channel
+        messages at restart.  Some people without SSD's have complained
+        about the speed of the loading in the past, so this is a
+        workaround until I can investigate more.
+
+        Improved parsing so that IMP won't alert for system-a when people
+        say things like "red went from system-a to system-b", or
+        "red left system-a", or "red system-b was system-a".
+
+0.8.9 - Fixes the bug where the first two menu dropdowns were no longer
+        working for Windows users.
+
+        Sound fixes and optimization.
+
+0.8.8 - Fixes crashes when changing regions due to access of invalidated
+        logInfo pointers.
+
+0.8.7 - Fixed avatars not showing for some users on Windows due to missing
+        DLLs.
+
+        Modified pocket expansion to only occur for status messages, since
+        people are too often sending free-form messages to intel with the
+        word "pocket" in them.  This will stop the entire pocket from going
+        red and us all getting an earful of red alert.
+
+        Changed the parser to not ignore two letter words as potentially
+        being part of a pilots name.  At least one red created an alt with
+        a two char first and two char last name to fly under the
+        radar.
+
+0.8.6 - Fixed message view colors when resetting style to "-None-".
+
+        Fixed initialization of jump bridges when bridgemap has changed
+        during run.
+
+        Now saves jumpbridge visibility state.
+
+        Fixed another KOS checker bug, tripped when specific error returns
+        from CVA.
+
+        Added si to common words to stop notifications for that system based
+        on some pilot names.
+
+0.8.5 - Modified message list to be a dockable widget.  You can now move it
+        to any side of the window, or detach it to be it's own floating
+        window.
+
+        Added a couple of additional test styles:  Blood Raider, Ore, and
+        Entellag.
+
+0.8.4 - Added skin/styles support.  This adds a new UI tab to the settings
+        dialog where you can select the style.  You can add your own styles
+        by placing them in the /styles subdirectory.  Take a look at
+        https://doc.qt.io/qt-5/stylesheet-examples.html for more info on
+        the format.  There will be more cleanup/expansion to the styles and
+        UI in subsequent releases.  Until this is further along, the app
+        still defaults to unskinned.
+
+        Added the ability to drag window by grabbing the non-map/list areas.
+        Note: If you drag the window in this manner on a high-DPI screen
+        with a desktop manager that's doing scaling, the window may shrink
+        slightly on each move due to a bug inside the Qt QWidget::move()
+        function that I have not yet investigated.  It works fine on
+        non-4k/scaled screens.
+
+        Fixes "show avatars" option not being saved.
+
+        Fixes calculation of word wrap to better fit text in message list if
+        you have avatars disabled.
+
+        Fix some minor memory leaks.
+
+0.8.3 - Fixed two more missing KOS texts.
+
+        "Overlay Mode" added.  This disables drawing of (only) the map and
+        window background, turns on frameless window mode, hides the menu,
+        and enables the Always on Top flag.  This allows you to put IMP on
+        top of the game window and obscure much less of the game (particularly
+        if you drag the message list to the closed position).  Use 'O' to
+        toggle overlay mode on/off.
+
+        Added transparency support:  Click the map (to make sure the app
+        has focus) and then use Ctrl+Alt+Mousewheel to adjust transparency
+        of the entire application.  This is different than overlay mode in
+        that overlay mode makes only the map/window backgrounds
+        fully transparent, whereas transparency support adjusts *all* visual
+        elements.
+
+        "Frameless Window" option added.  Use 'W' to toggle the window
+        title bar on/off.  This can also be used from Overlay mode to
+        re-enable the title-bar for easy re-positioning and then to
+        re-disable it.
+
+        Added an Always on Top hotkey: 'T'.  Note:  When using the Unity
+        desktop on Ubuntu, Compiz doesn't seem to honor toggling the flag
+        off correctly.  You will have to disable it by right-clicking the
+        title-bar if you're using that desktop.  KDE, and the Windows desktops
+        toggle the always-on-top state as expected.
+
+        Added Menu hide/unhide hotkey: 'M'  You can use this in desktops
+        like KDE and Windows to toggle the menubar on/off while in overlay
+        mode.
+
+        Added "--debuglogging" flag.  Log writing is now disabled by default
+        unless this flag is set.
+
+        Fixed a bug where some Linux desktops would not load themes due to
+        auto-shortcuts.
+
+0.8.2 - Now support's "Pocket Status" queries.  I.E. "b-w pocket status?"
+
+        Fixed missing text from KOS checks since 0.8.0.
+
+0.8.1 - Fixed ESS message crash bug.
+
+0.8.0 - Messages in list can now be doubleclicked to find the related system.
+
+        Message text is now colorized to highlight the mentioned systems, ships,
+        and other keywords.  A future release will make all of these colors
+        configurable options.
+
+        Message view resizing has been improved to size much better.  It will
+        now show the entire message when set smaller.
+
+0.7.8 - Now remembers which pilots you had enabled between runs.
+
+        Changes to option saving:  Most options are now saved when the options
+        dialog is accepted, to lessen chance of corruption on abnormal system
+        shutdown.
+
+        Fixes a bug where if IMP was started before Eve, newly logged-in pilots
+        that had not been played for 24+ hours would not be seen until someone
+        said something in local.
+
+        The list of available audio files is now rebuilt each time you open the
+        options dialog, so you do not need to restart IMP to see newly added
+        files.
+
+        Windows users will now see a "Window" menu, which has the "Always on
+        Top" option that's missing from their desktop compositor.
+
+0.7.7 - Catches network/server failures on KOS lookups and plays a new "incomplete"
+        lookup sound.  The new sound is configurable on KOS tab in options, and
+        defaults to the sound of a bottle-cap being dropped.
+
+        Red-by-last checking now properly distinguishes between new, unlisted,
+        pilots who are in red corps and people that are red by their previous
+        player corp membership.
+
+        Minor variable refactoring.
+
+0.7.6 - Stop "x4" from setting off alarms in X-4.  x[2-9] are no longer considered
+        potential system abbreviations.
+
+        Message view can now be sized smaller.
+
+        Renamed Regions menu to Map and added a "Reset Rotation" option, just in
+        case someone manages to desync system/map rotation before I make that
+        system smarter.
+
+        Fixed a couple of potential crashes when clicking map/subsetting messages.
+
+        Fixed it so that IMP will not add the intel channels multiple times if
+        you have joined them with multiple pilots.
+
+        Shout outs to Fenix Inferni and Subelectro Shanzaar for the donations!
+
+0.7.5 - Added option to disable portraits.
+
+        Added option to use Ctrl-Cx2 for KOS checks.
+
+0.7.4 - Another fix for RBL checks when CVA comes back with no info for corp.
+
+0.7.3 - Fixes various issues with kos checking.
+
+0.7.0 - Added red-by-last KOS checking.
+
+        Changed default font sizes to be not customized for my weird 150% in a VM on a
+        4k screen size.
+
+0.6.3 - Add the ability to kos-check people by right-click/Copy of links pasted into
+        chat.
+
+        Resets default sounds if previous run abended in a way that cause blank values
+        to be written to the config.
+
+0.6.2 - Added user-agent to network requests.
+
+        Fixed bug that affected loading of line color on some themes.
+
+        Parser cleanup.
+
+        Misc obsolete code cleanup.
+
+0.6.1 - Add MP4 support for info dialog.
+
+0.6.0 - Unified theme customization dialog.
+
+        Added ability to use real SVG's for background, instead of converting them to
+        pixmaps at load time.
+
+        Additonal theme customization parameters.
+
+0.5.3 - Updated info dialog and added some additional sounds.
+
+0.5.2 - Clear messages were unintentionally being accepted from any channel.
+
+0.5.1 - Added SVG support for backgrounds.
+
+        Fixed centering bug that would occur when a very large background was replaced
+        with a smaller image.
+
+        Centralized functionality to get paths to app files so it could be abstracted to
+        behave differently under different OSes and conditions.  This allows for a real
+        Linux installer to put it in the standard directories instead of just running
+        from the user's home directory.
+
+0.5.0 - Added ability to click systems and see the related messages.
+
+        Added Find|Messages option that lets you subset to messages that contain a certain
+        string.
+
+        Added the ability to set a background image, which is saved with themes.
+
+        Now doesn't occasionally reposition the map to center on your system when you
+        didn't really change systems.
+
+        Change z ordering for jumpbridges to draw on top of lines, which makes them easier
+        to follow if you're using a theme with thick system connection lines.
+
+
+0.4.0 - Converted from using massaged dotlan maps with injected XML to deconstructing them
+        on load and building my own object instances.  This improves performance and lays
+        groundwork for total system theming.
+
+        Locked system icons so that they will not be affected by rotation of map.
+
+        Made system name and time font/size configurable and is now included in themes.
+
+        Fixed a crash that would sometimes occur when switching map to other regions.
+
+        Fixed some missing logic that would cause changes to the options for map-refresh,
+        auto-follow period, and poller-refresh to not actually take effect until restart.
+
+        Added some primitive size-hinting so that longer messages get more vertical
+        space in their listview.
+
+0.3.0 - Added pilots menu and the ability to disable processing for individual pilots to
+        accomodate multi-boxers.
+
+        Additional theming updates.
+
+0.2.2 - Fix for multiboxes only seeing last logged on char.
+
+0.2.1 - Minor fixes.  First release shared with corp.
+
+0.2.0 - Added jumpbridges, basic theming, and more options.
+
+0.1.0 - First QSvgRenderer version, first Windows build.
+
+0.0.2 - Added rules, a bunch of configuration, and wasted tons of time trying to get the
+0.0.9   map working reliably with QWebEngine.  Even more wasted time trying to compile
+        QWebKit on Windows when it became clear QWebEngine was not functional enough
+        to meet the requirements at this time.
+
+0.0.1 - Original QWebKit version on Linux with working map, parser, configurable sounds.
+
+
+Coming soon:
+
+- click user icon for zkillboard
+- right-click to copy system name.
+- Rework KOS Checking:  kos msg for red by last should show person and corp.
+- fix display of messages with backslashes.
+- better pilot cache/cleanup.
+- if at war (determine from corp/alliance message), and going hisec, play a "bad idea" sound.
+- TTS support
+- Maybe an option to auto-change region?
+- Bubble indicators
+- Make mini militia faction count (RBL npc corps)?
+- Add some intelligence to handle dumb names like R3 Clear
+- Add option to autobuild jumpbridge list from dotlan instead of files.
+- Add queue-play option to queue sounds.
+- Reload internal list when rules updated.
+- Laugh at people reporting themselves
+- KOS checker redirection?
+- Menu option to change transparency.
+- Stop music on about dialog with checkbox.
+- load last map used
